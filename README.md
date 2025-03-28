@@ -41,13 +41,15 @@ pnpm install
 
 ## Running the Application
 
-### Standard Development Server (HTTP)
+### Development Mode
+
+#### Standard Development Server (HTTP)
 
 ```bash
 npm run dev
 ```
 
-### HTTPS Development Server (Recommended)
+#### HTTPS Development Server (Recommended)
 
 For full File System Access API support (direct file editing):
 
@@ -55,9 +57,39 @@ For full File System Access API support (direct file editing):
 npm run dev:https
 ```
 
-This will start a secure HTTPS server on port 3000. You can access the application at:
-- https://localhost:3000
-- https://your-local-ip:3000 (for access from other devices on your network)
+### Production Mode
+
+#### Build the Application
+
+```bash
+npm run build
+```
+
+#### Run Standard Production Server (HTTP)
+
+```bash
+npm start
+```
+
+#### Run HTTPS Production Server (Recommended)
+
+For full File System Access API support in production:
+
+```bash
+npm run start:https
+```
+
+This will start a secure HTTPS server on port 3001 (or the port specified in the PORT environment variable). You can access the application at:
+- https://localhost:3001
+- https://your-local-ip:3001 (for access from other devices on your network)
+
+#### Changing the Port
+
+You can change the port by setting the PORT environment variable:
+
+```bash
+PORT=4443 npm run start:https
+```
 
 #### Notes for HTTPS Setup
 
@@ -90,7 +122,7 @@ This will start a secure HTTPS server on port 3000. You can access the applicati
 
 ## Troubleshooting
 
-- **404 Error or Redirect Loop**: Make sure you're accessing the site via https://localhost:3000 not http://localhost:3000
+- **404 Error or Redirect Loop**: Make sure you're accessing the site via https://localhost:3001 not http://localhost:3001
 - **File System API Not Working**: Ensure you're using an HTTPS connection and a compatible browser (Chrome, Edge or other Chromium-based browsers)
 - **Cannot Install Dependencies**: Try using the `--legacy-peer-deps` flag with npm install
 

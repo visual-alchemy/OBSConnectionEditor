@@ -30,6 +30,9 @@ const dev = process.env.NODE_ENV !== "production"
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
+// Define port - use process.env.PORT if available, otherwise default to 3001
+const port = process.env.PORT || 3001
+
 app.prepare().then(() => {
   // Let Next.js handle all requests
   httpsApp.all("*", (req, res) => {
@@ -37,13 +40,14 @@ app.prepare().then(() => {
     handle(req, res, parsedUrl)
   })
 
-  // Start the server on port 3000
-  httpsApp.listen(3000, () => {
+  // Start the server on the specified port
+  httpsApp.listen(port, () => {
     console.log("\x1b[32m%s\x1b[0m", "> Server started!")
+    console.log("> Mode:", dev ? "DEVELOPMENT" : "PRODUCTION")
     console.log("> Ready on:")
-    console.log("  \x1b[36mhttps://localhost:3000\x1b[0m")
+    console.log(`  \x1b[36mhttps://localhost:${port}\x1b[0m`)
     localIPs.forEach((ip) => {
-      console.log(`  \x1b[36mhttps://${ip}:3000\x1b[0m`)
+      console.log(`  \x1b[36mhttps://${ip}:${port}\x1b[0m`)
     })
     console.log("> File System Access API should now work properly")
   })
