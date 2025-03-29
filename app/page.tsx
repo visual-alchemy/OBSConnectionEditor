@@ -685,7 +685,7 @@ export default function Home() {
                   </div>
 
                   <div className="flex items-center space-x-2">
-                    <Label htmlFor="show">Show in UI</Label>
+                    <Label htmlFor="show">Show</Label>
                     <input
                       id="show"
                       type="checkbox"
@@ -750,7 +750,7 @@ export default function Home() {
                       <TableHead>Name</TableHead>
                       <TableHead>Category</TableHead>
                       <TableHead>Address</TableHead>
-                      <TableHead>Visible</TableHead>
+                      <TableHead>Show</TableHead>
                       <TableHead>Actions</TableHead>
                     </TableRow>
                   </TableHeader>
@@ -763,7 +763,7 @@ export default function Home() {
                           <TableCell className="font-mono text-sm">{conn.address}</TableCell>
                           <TableCell>
                             <Button variant="ghost" size="sm" onClick={() => toggleVisibility(conn.id)}>
-                              {conn.show ? "Yes" : "No"}
+                              {conn.show ? "true" : "false"}
                             </Button>
                           </TableCell>
                           <TableCell>
